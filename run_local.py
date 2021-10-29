@@ -126,7 +126,7 @@ if __name__ == '__main__':
     startTime = datetime.now()
 
     # name_of_sim = os.path.splitext(sys.argv[1])[0]
-    name_of_sim = 'ben_shalom_young'
+    name_of_sim = './sim_files/ben_shalom_young'
 
     target_path = './Results/' + name_of_sim
     if not os.path.exists(target_path):
@@ -142,8 +142,8 @@ if __name__ == '__main__':
     print(f'AIS (0.4) gbar\tscn8a: {h.axon[0](0.4).nav18.gbar:.2f}')
 
     # current injection protocol
-    currentstep = 0.5 # nA
-    sweeps = 4
+    currentstep = 0.1 # nA
+    sweeps = 24
     # start from 1 nA to save computation time
     currents = [1 + x * currentstep for x in range(sweeps)]
     simresults = []
@@ -151,8 +151,8 @@ if __name__ == '__main__':
     # print results during execution
     print('\ncurrent: \t # spikes: \t AP threshold: \t spike delay: \t spike amplitude: \t peak na current:')
 
-    for i, current in enumerate(currents):
-        result = cc_simulation(current)
+    for i in currents:
+        result = cc_simulation(i)
         simresults.append(result)
 
     save_results(simresults, target_path)
