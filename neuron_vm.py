@@ -125,8 +125,8 @@ if __name__ == '__main__':
 
     startTime = datetime.now()
 
-    # name_of_sim = os.path.splitext(sys.argv[1])[0]
-    name_of_sim = 'ben_shalom_young'
+    name_of_sim = os.path.splitext(sys.argv[1])[0]
+    # name_of_sim = 'ben_shalom_young'
 
     target_path = './Results/' + name_of_sim
     if not os.path.exists(target_path):
@@ -149,12 +149,12 @@ if __name__ == '__main__':
 
     # print results
     print('\ncurrent: \t # spikes: \t AP threshold: \t spike delay: \t spike amplitude: \t peak na current:')
-    cc_simulation(1.0)
-    # pool = Pool()
-    # simresults = pool.map(cc_simulation, currents)
 
-    # pool.close()
-    # pool.join()
+    pool = Pool()
+    simresults = pool.map(cc_simulation, currents)
+
+    pool.close()
+    pool.join()
 
     # save_results(simresults, target_path)
     print(datetime.now() - startTime)
