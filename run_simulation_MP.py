@@ -12,7 +12,7 @@ def initialize(filename):
     """
     initialize NEURON simulation environment and Hallermann et al. 2012 model
     """
-    h.load_file('stdgui.hoc')
+    h.load_file("stdgui.hoc")
     h.load_file('stdrun.hoc')
     h.load_file('morphology.hoc')
     h.load_file(filename)
@@ -74,7 +74,7 @@ def cc_simulation(currentinjection):
     # get peak Na current
     peak_na = functions.get_na_peak(na_current[start:end])
 
-    print(f'{clamp.amp:.2f} nA \t {spikes_soma:2d} \t\t {threshold_soma:.1f} mV \t {ap_delay:.1f} ms \t {ap_amp_soma:.1f} mV \t {peak_na:.1f} nA')
+    print('%.2f nA \t %2d \t\t %.1f mV \t %.1f ms \t %.1f mV \t %.1f nA' % (clamp.amp, spikes_soma, threshold_soma, ap_delay, ap_amp_soma, peak_na))
     result = [clamp.amp, spikes_soma, threshold_soma, ap_amp_soma, ap_delay, spikes_ais, threshold_ais, ap_amp_ais, peak_na]
 
     return result, soma_voltage, ina
@@ -125,8 +125,7 @@ if __name__ == '__main__':
 
     startTime = datetime.now()
 
-    # name_of_sim = os.path.splitext(sys.argv[1])[0]
-    name_of_sim = './sim_files/ben_shalom_young'
+    name_of_sim = os.path.splitext(sys.argv[1])[0]
 
     target_path = './Results/' + name_of_sim
     if not os.path.exists(target_path):
@@ -138,22 +137,23 @@ if __name__ == '__main__':
     # ais_diam()
     # soma_size()
 
-    print(f'AIS (0.2) gbar\tscn2a: {h.axon[0](0.2).nav12.gbar:.2f}\tmutated scn2a: {h.axon[0](0.2).nav12_mut.gbar:.2f}')
-    print(f'AIS (0.4) gbar\tscn8a: {h.axon[0](0.4).nav18.gbar:.2f}')
+    print('AIS (0.2) gbar\tscn2a: %.2f\tmutated scn2a: %.2f' % (h.axon[0](0.2).nav12.gbar, h.axon[0](0.2).nav12_mut.gbar))
+    print('AIS (0.4) gbar\tscn8a: %.2f' % (h.axon[0](0.4).nav18.gbar))
 
     # current injection protocol
     currentstep = 0.1 # nA
     sweeps = 24
     # start from 1 nA to save computation time
     currents = [1 + x * currentstep for x in range(sweeps)]
-    simresults = []
 
-    # print results during execution
+    # print results
     print('\ncurrent: \t # spikes: \t AP threshold: \t spike delay: \t spike amplitude: \t peak na current:')
 
-    for i in currents:
-        result = cc_simulation(i)
-        simresults.append(result)
+    pool = Pool()
+    simresults = pool.map(cc_simulation, currents)
 
-    save_results(simresults, target_path)
+    pool.close()
+    pool.join()
+
+    # save_results(simresults, target_path)
     print(datetime.now() - startTime)

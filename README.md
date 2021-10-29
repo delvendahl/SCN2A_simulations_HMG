@@ -17,9 +17,9 @@ Simulations were run with NEURON 8.0 in Python 3.8 (NEURON can be install via `p
 
 To run simulations:  
 * compile all .mod files (cd to directory and execute `nrnivmodl`)
-* in 'run_local.py', select model to run (from 'sim_files' folder) by setting the .hoc file to be loaded:  
+* in run_simulation.py, select model to run (from '/sim_files' folder) by setting the .hoc file to be loaded:  
 e.g.  
-  `name_of_sim = './sim_files/ben_shalom_young'`
+  `name_of_sim = './sim_files/ben_shalom_young.hoc'`
 * The different simulation runs were the following:
   * WT (100% SCN2A): "sim_files/ben_shalom_young.hoc"
   * 50% SCN2A: "sim_files/youngPN_scn2a_ais_50perc.hoc"
@@ -28,11 +28,12 @@ e.g.
 * adjust current injection amplitude and number of increasing sweeps, if desired:  
   `currentstep = 0.1`  
   `sweeps = 24`
-* run 'run_local.py'
+* run run_simulation.py
+* the file run_simulation_MP.py can be used for using multiprocessing
 
 The simulation output is saved as .txt files into the folder "Results".
   
   
-  
+---  
 Contact:
 igor.delvendahl@uzh.ch
