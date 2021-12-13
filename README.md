@@ -13,25 +13,25 @@ of the model that accompanied the paper "State and
 location dependence of action potential metabolic 
 cost" ([Hallermann et al. 2012](http://dx.doi.org/10.1038/nn.3132)).
   
-Simulations were run with NEURON 8.0 in Python 3.8 (NEURON can be install via `pip install neuron`)
+Simulations were run with NEURON 8.0 in Python 3.8.12 (NEURON can be install via `pip install neuron`). Python dependencies: neuron, numpy, scipy
 
 To run simulations:  
 * compile all .mod files (cd to directory and execute `nrnivmodl`)
-* in run_simulation.py, select model to run (from '/sim_files' folder) by setting the .hoc file to be loaded:  
+* in run_simulation.py, select model to run by setting the name of the .hoc file to be loaded (from "/sim_files" folder):  
 e.g.  
-  `name_of_sim = './sim_files/ben_shalom_young.hoc'`
+  `name_of_sim = 'ben_shalom_young'`
 * The different simulation runs were the following:
-  * WT (100% SCN2A): "sim_files/ben_shalom_young.hoc"
-  * 50% SCN2A: "sim_files/youngPN_scn2a_ais_50perc.hoc"
-  * 0% SCN2A: "sim_files/youngPN_scn2a_ais_0perc.hoc"
-  * E1803G (50% WT/50% E1803G): "sim_files/youngPN_scn2a_ais_E1803G_het.hoc"
+  * WT (100% SCN2A): "ben_shalom_young"
+  * 50% SCN2A: "youngPN_scn2a_ais_50perc"
+  * 0% SCN2A: "youngPN_scn2a_ais_0perc"
+  * E1803G: "youngPN_scn2a_ais_E1803G_het_2"
 * adjust current injection amplitude and number of increasing sweeps, if desired:  
   `currentstep = 0.1`  
   `sweeps = 24`
 * run run_simulation.py
 * the file run_simulation_MP.py can be used for using multiprocessing
 
-The simulation output is saved as .txt files into the folder "Results".
+The simulation output is saved as .txt files into the folder "Results/".
   
   
 ---  

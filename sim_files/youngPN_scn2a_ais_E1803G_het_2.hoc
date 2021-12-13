@@ -38,8 +38,8 @@ na_collat	=	500
 na_soma = 500
 
 na_soma_het = na_soma/2
-na_ais_het	= na_ais/2 * scn2a_scale_factor
-na_ais1_het	= na_ais1/2 * scn2a_scale_factor
+na_ais_mut	= na_ais * scn2a_scale_factor
+na_ais1_mut	= na_ais1 * scn2a_scale_factor
 
 na_dend		=	20
 na_myelin	=	40
@@ -180,16 +180,16 @@ proc init_channels() {
 		insert nav18 	gbar_nav18(0:0.4) = 0:0
 					gbar_nav18(0.4:1) = 0:0
 
-		insert nav12_2 	gbar_nav12_2(0:0.4) = 0:na_ais_het
-					gbar_nav12_2(0.4:1) = na_ais_het:na_ais_het
-		insert nav12_2_mut 	gbar_nav12_2_mut(0:0.4) = 0:na_ais_het
-					gbar_nav12_2_mut(0.4:1) = na_ais_het:na_ais_het
+		insert nav12_2 	gbar_nav12_2(0:0.4) = 0:0
+					gbar_nav12_2(0.4:1) = 0:0
+		insert nav12_2_mut 	gbar_nav12_2_mut(0:0.4) = 0:na_ais_mut
+					gbar_nav12_2_mut(0.4:1) = na_ais_mut:na_ais_mut
 
-		insert nav12 	gbar_nav12(0:0.2) = na_soma_het:na_ais1_het
-				 	gbar_nav12(0.2:0.4) = na_ais1_het:0
+		insert nav12 	gbar_nav12(0:0.2) = 0:0
+				 	gbar_nav12(0.2:0.4) = 0:0
 					gbar_nav12(0.4:1) = 0:0
-		insert nav12_mut 	gbar_nav12_mut(0:0.2) = na_soma_het:na_ais1_het
-				 	gbar_nav12_mut(0.2:0.4) = na_ais1_het:0
+		insert nav12_mut 	gbar_nav12_mut(0:0.2) = na_soma:na_ais1_mut
+				 	gbar_nav12_mut(0.2:0.4) = na_ais1_mut:0
 					gbar_nav12_mut(0.4:1) = 0:0
 
 		insert Kv1 	axon.gbar_Kv1(0:1)= Kv1_soma:Kv1_ais
