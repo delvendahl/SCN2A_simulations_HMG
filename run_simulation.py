@@ -103,7 +103,7 @@ def save_results(results, path):
     ap_traces = np.transpose(np.vstack((t, somatraces)))
     np.savetxt(path+'/soma_AP_traces.txt', ap_traces, fmt='%.5f', delimiter='\t')
     na_traces = np.transpose(np.vstack((t, totalna)))
-    np.savetxt(path+'/total_Na_current.txt', na_traces, fmt='%.5f', delimiter='\t')
+    np.savetxt(path+'/soma_Na_current.txt', na_traces, fmt='%.5f', delimiter='\t')
     na_ais_traces = np.transpose(np.vstack((t, ais_na)))
     np.savetxt(path+'/ais_Na_current.txt', na_ais_traces, fmt='%.5f', delimiter='\t')
 
@@ -133,7 +133,7 @@ if __name__ == '__main__':
     startTime = datetime.now()
 
     # name_of_sim = os.path.splitext(sys.argv[1])[0]
-    name_of_sim = 'youngPN_scn2a_ais_E1803G_het_2'
+    name_of_sim = 'ben_shalom_young'
     
     target_path = './Results/' + name_of_sim
     if not os.path.exists(target_path):

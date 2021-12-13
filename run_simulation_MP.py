@@ -103,7 +103,7 @@ def save_results(results, path):
     ap_traces = np.transpose(np.vstack((t, somatraces)))
     np.savetxt(path+'/soma_AP_traces.txt', ap_traces, fmt='%.5f', delimiter='\t')
     na_traces = np.transpose(np.vstack((t, totalna)))
-    np.savetxt(path+'/total_Na_current.txt', na_traces, fmt='%.5f', delimiter='\t')
+    np.savetxt(path+'/soma_Na_current.txt', na_traces, fmt='%.5f', delimiter='\t')
     na_ais_traces = np.transpose(np.vstack((t, ais_na)))
     np.savetxt(path+'/ais_Na_current.txt', na_ais_traces, fmt='%.5f', delimiter='\t')
 
