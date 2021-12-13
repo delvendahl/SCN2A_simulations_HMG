@@ -17,8 +17,7 @@ Simulations were run with NEURON 8.0 in Python 3.8.12 (NEURON can be install via
 
 To run simulations:  
 * compile all .mod files (cd to directory and execute `nrnivmodl`)
-* in run_simulation.py, select model to run by setting the name of the .hoc file to be loaded (from "/sim_files" folder):  
-e.g.  
+* in run_simulation.py, select model to run by setting the name of the .hoc file to be loaded (from "/sim_files" folder), e.g.:  
   `name_of_sim = 'ben_shalom_young'`
 * The different simulation runs were the following:
   * WT (100% SCN2A): "ben_shalom_young"
@@ -31,7 +30,11 @@ e.g.
 * run run_simulation.py
 * the file run_simulation_MP.py can be used for using multiprocessing
 
-The simulation output is saved as .txt files into the folder "Results/".
+The simulation output is saved as .txt files into the folder "Results/". Subfolders are created for each independent condition. Output files are:
+* "spiking_results.txt" -> current injection, spike numbers, threshold, amplitude and spike delay, spikes AIS, threshold AIS, amplitude AIS, soma I_Na, AIS_I_Na
+* "soma_AP_traces.txt" -> voltage traces of the soma
+* "soma_Na_current.txt" -> Na current traces (from soma)
+* "ais_Na_current.txt"  -> Na current traces (from AIS)
   
   
 ---  
