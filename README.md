@@ -5,8 +5,8 @@
 
 # Pyramidal neuron model for studying ***SCN2A*** mutations
 
-This directory contains NEURON and Python files to simulate the effect of 
-different *SCN2A* mutations in a reconstructed pyramidal neuron. 
+This repository contains NEURON and Python files to simulate the effect of 
+different *SCN2A* mutations in a reconstructed mouse cortical L5 pyramidal neuron. 
 The model is based on the implementation by 
 [Ben-Shalom et al. 2017](http://dx.doi.org/10.1016/j.biopsych.2017.01.009) 
 of the model that accompanied the paper "State and
