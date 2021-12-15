@@ -108,7 +108,7 @@ def save_results(results, path):
     np.savetxt(path+'/ais_Na_current.txt', na_ais_traces, fmt='%.5f', delimiter='\t')
 
 
-def ais_diam():
+def print_ais_diam():
     """
     prints length and diameter of AIS (=axon[0])
     """
@@ -118,7 +118,7 @@ def ais_diam():
         print(h.axon[0](i).diam)
 
 
-def soma_size():
+def print_soma_size():
     """
     prints length, diameter and area of soma
     """
@@ -143,8 +143,8 @@ if __name__ == '__main__':
     initialize(path_to_hocfile)
     h.dt = 0.02
 
-    # ais_diam()
-    # soma_size()
+    # print_ais_diam()
+    # print_soma_size()
 
     print(f'AIS (0.2) gbar\tscn2a: {h.axon[0](0.2).nav12.gbar:.2f}\tmutated scn2a: {h.axon[0](0.2).nav12_mut.gbar:.2f}')
     print(f'AIS (0.4) gbar\tscn8a: {h.axon[0](0.4).nav18.gbar:.2f}')
