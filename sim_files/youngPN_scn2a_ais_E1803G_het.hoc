@@ -43,7 +43,7 @@ Kv1_ais		=	2000
 Kv1_soma	=	100
 Kv1_collat	=	400
 
-vShift_Kv1		=	10
+vShift_Kv1	=	10
 vShift_inact_Kv1	=	-15
 
 Kv7_soma	=	1
@@ -65,8 +65,8 @@ gkca_soma	=	1.0*ca_reduce_fac
 gkca_dend	=	1.0*ca_reduce_fac
 gkca_ais	=	1.0*ca_reduce_fac
 
-gCa_HVA_apic_hot_fac=	1	//i.e. no Ca hot spot	//ca
-gCa_LVAst_apic_hot_fac=	1				//it2
+gCa_HVA_apic_hot_fac	=	1	//i.e. no Ca hot spot	//ca
+gCa_LVAst_apic_hot_fac	=	1				//it2
 gCa_hot_start	=	685
 gCa_hot_end	=	885
 
@@ -205,8 +205,6 @@ proc init_channels() {
 			insert nav18 gbar_nav18 = na_myelin
 			insert Kv7 gbar_Kv7 = Kv7_soma
 			insert Kv1 gbar_Kv1 = 20
-
-
 		}
 	}
 
@@ -221,7 +219,7 @@ proc init_channels() {
 
 	forall ena=55
 	forall ek=-98
-	//forall insert charge_
+
 
 // ---------------------------------------------------------------------
 // Calcium enhancement to reproduce frequency effect (Larkum et al,1999)
