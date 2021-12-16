@@ -18,7 +18,7 @@ def initialize(filename):
     h.load_file('stdrun.hoc')
     h.load_file('morphology.hoc')
     h.load_file(filename)
-    print(filename)
+    print('Simulation file: {}'.format(filename))
 
     h.parameters()
     h.geom_nseg()
@@ -149,11 +149,11 @@ if __name__ == '__main__':
     print(f'AIS (0.2) gbar\tscn2a: {h.axon[0](0.2).nav12.gbar:.2f}\tmutated scn2a: {h.axon[0](0.2).nav12_mut.gbar:.2f}')
     print(f'AIS (0.4) gbar\tscn8a: {h.axon[0](0.4).nav18.gbar:.2f}')
 
-    # current injection protocol
+    # current injection protocol (start from 1 nA to save computation time)
     currentstep = 0.1 # nA
     sweeps = 24
-    # start from 1 nA to save computation time
     currents = [1 + x * currentstep for x in range(sweeps)]
+    
     simresults = []
 
     # print results during execution

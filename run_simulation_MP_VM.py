@@ -5,7 +5,7 @@ import functions
 from multiprocessing import Pool
 from datetime import datetime
 import os
-from functools import partial
+import sys
 
 
 def initialize(filename):
@@ -18,25 +18,22 @@ def initialize(filename):
     h.load_file('stdrun.hoc')
     h.load_file('morphology.hoc')
     h.load_file(filename)
+    print(filename)
 
     h.parameters()
     h.geom_nseg()
     h.init_channels()
 
 
-def cc_simulation(currentinjection, path):
+def cc_simulation(currentinjection):
     """
     Runs CC simulation of Hallermann et al. 2012 model and returns a list of simulation results
     :param currentinjection: amplitude (nA) of current injection to run simulation with
-    :param path: path to load .hoc file from
     :return: list of results (clamp.amp, spikes_soma, threshold_soma, ap_amp_soma, ap_delay, 
      spikes_ais, threshold_ais, ap_amp_ais, peak_na, peak_ais_na).
      "soma_voltage" and "axon_voltage" are raw voltage traces from NEURON. "ina", "ina_ais" 
      are raw Na-current traces from NEURON (total Na current and AIS Na current).
     """
-    # initialize NEURON simulation environment
-    initialize(path)
-    h.dt = 0.02
 
     # general NEURON settings
     recordTime = 650.0 * ms
@@ -135,6 +132,7 @@ if __name__ == '__main__':
 
     startTime = datetime.now()
 
+    # name_of_sim = os.path.splitext(sys.argv[1])[0]
     name_of_sim = 'youngPN_scn2a_ais_E1803G_het'
 
     target_path = './Results/' + name_of_sim
@@ -142,20 +140,26 @@ if __name__ == '__main__':
         os.mkdir(target_path)
 
     path_to_hocfile = f'./sim_files/{name_of_sim}.hoc'
-    print('Simulation file: {}'.format(path_to_hocfile))
+    initialize(path_to_hocfile)
+    h.dt = 0.02
 
-    # current injection protocol (start from 1 nA to save computation time)
+    # print_ais_diam()
+    # print_soma_size()
+
+    print('AIS (0.2) gbar\tscn2a: %.2f\tmutated scn2a: %.2f' % (h.axon[0](0.2).nav12.gbar, h.axon[0](0.2).nav12_mut.gbar))
+    print('AIS (0.4) gbar\tscn8a: %.2f' % (h.axon[0](0.4).nav18.gbar))
+
+    # current injection protocol
     currentstep = 0.1 # nA
     sweeps = 24
+    # start from 1 nA to save computation time
     currents = [1 + x * currentstep for x in range(sweeps)]
 
     # print results
     print('\ncurrent: \t # spikes: \t AP threshold: \t spike delay: \t spike amplitude: \t peak na current:')
 
-    mp_func = partial(cc_simulation, path=path_to_hocfile)
-
     with Pool() as p:
-        results = p.map(mp_func, currents)
+        results = p.map(cc_simulation, currents)
 
     save_results(results, target_path)
     print(datetime.now() - startTime)

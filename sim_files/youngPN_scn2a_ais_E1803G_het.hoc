@@ -1,33 +1,6 @@
-access soma
-area(0.5)
-distance()
-
-proc geom_nseg() {
-	soma area(0.5) // make sure diam reflects 3d points
-	forall {nseg = int((L/(0.1*lambda_f(10000))+0.9)/2)*2+1}
-}
-	
-
-//--------------------------------------------------------------
-//  Initialise user-defined membrane parameters 
-// --------------------------------------------------------------
-
-proc parameters() {
-	celsius = 33		
-	Ri = 80	    			
-	Cm = 1.0      		
-	Rm = 15000      	
-	v_init = -85
-	Spinescale = 1.5					
-}
-
-
-
 // ----------------------------------------------------------------------------
-// Channel densities
+// Channel densities and parameters
 //-----------------------------------------------------------------------------
-
-//CAVE: check for parameter-settings in loaded sessions
 
 scn2a_scale_factor = 1.0
 
@@ -99,6 +72,30 @@ gCa_hot_end	=	885
 
 spinescale	=	1.5
 sheaths		=	10	//number of myelin sheaths
+
+
+//---------------------------------------------------------------
+//  Create segments
+// --------------------------------------------------------------
+
+proc geom_nseg() {
+	soma area(0.5) // make sure diam reflects 3d points
+	forall {nseg = int((L/(0.1*lambda_f(10000))+0.9)/2)*2+1}
+}
+	
+	
+//---------------------------------------------------------------
+//  Initialise user-defined membrane parameters 
+// --------------------------------------------------------------
+
+proc parameters() {
+	celsius = 33		
+	Ri = 80	    			
+	Cm = 1.0      		
+	Rm = 15000      	
+	v_init = -85
+	Spinescale = 1.5					
+}
 
 
 // ----------------------------------------------------------------------------
@@ -200,8 +197,6 @@ proc init_channels() {
 		insert kca	gbar_kca = gkca_ais
 	}
 
-
-
 //main axon: i.e. myelin and nodes
 	for i=0,myNum-1 {
 		my[i] {
@@ -223,7 +218,6 @@ proc init_channels() {
 			insert Kv7 gbar_Kv7 = Kv7_ais
 		}
 	}
-
 
 	forall ena=55
 	forall ek=-98
@@ -327,9 +321,6 @@ proc init_channels() {
 	area(0.5)
 	distance()
 
-
-
-
 	//basal dendrites
 	for i=0,dendNum-1 {
 		dend[i] {
@@ -357,8 +348,6 @@ proc init_channels() {
 			}
 		}
 	}
-
-
 
 
 // --------------------------------------------------------------------------
