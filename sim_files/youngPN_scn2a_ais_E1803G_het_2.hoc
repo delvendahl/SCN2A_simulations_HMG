@@ -12,7 +12,7 @@ na_ais		=	7000	// nav1.8 (->nav1.2 for developing model)
 na_ais1		= 	5000 	// nav1.2
 na_node		=	7000
 na_collat	=	500
-na_soma = 500
+na_soma 	= 	500
 
 na_ais_mut	= na_ais * scn2a_scale_factor
 na_ais1_mut	= na_ais1 * scn2a_scale_factor
@@ -38,7 +38,7 @@ vShift_nav18 = 10
 vShift_inact_nav18 = 10
 
 length_constant_Kv_and_Kv1	=	80	// length constant of the exponential decay in um of Kv and Kv1
-						//according to Keren et al., 2009, JPhysiol, 587:1413-37
+						// according to Keren et al., 2009, JPhysiol, 587:1413-37
 Kv_soma	 	=	100
 Kv_dend	 	=	3
 
@@ -165,7 +165,7 @@ proc init_channels() {
 		insert Kv1 	gbar_Kv1 = Kv1_soma
 	}
 
-// collaterals, note that axon[0] is AIS
+// collaterals; note that axon[0] is AIS
 	for i=1,axonNum-1 {
 		axon[i]  {
 			g_pas=1/Rm
