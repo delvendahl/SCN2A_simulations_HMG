@@ -1,6 +1,10 @@
+// .hoc file for simulating E1803G
+// activation/inactivation shifts = 0/10
+
+
 // ----------------------------------------------------------------------------
 // Channel densities and parameters
-//-----------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
 
 scn2a_scale_factor = 1.0
 
@@ -74,7 +78,7 @@ spinescale	=	1.5
 sheaths		=	10	//number of myelin sheaths
 
 
-//---------------------------------------------------------------
+// --------------------------------------------------------------
 //  Create segments
 // --------------------------------------------------------------
 
@@ -84,7 +88,7 @@ proc geom_nseg() {
 }
 	
 	
-//---------------------------------------------------------------
+// --------------------------------------------------------------
 //  Initialise user-defined membrane parameters 
 // --------------------------------------------------------------
 
@@ -100,11 +104,11 @@ proc parameters() {
 
 // ----------------------------------------------------------------------------
 // Initialisation of passive and active properties, spine scaling, Rm and Cm
-//-----------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
 
 proc init_channels() {
 
-//all
+// all
 	forall {
 		insert pas
 		Ra=Ri
@@ -148,7 +152,7 @@ proc init_channels() {
 		}
 	}
 
-//soma
+// soma
 	soma  {nseg=9}
 	soma  {
 		insert nav12 	gbar_nav12 = na_soma
@@ -161,7 +165,7 @@ proc init_channels() {
 		insert Kv1 	gbar_Kv1 = Kv1_soma
 	}
 
-//collaterals note that axon[0] is AIS
+// collaterals, note that axon[0] is AIS
 	for i=1,axonNum-1 {
 		axon[i]  {
 			g_pas=1/Rm
@@ -170,7 +174,7 @@ proc init_channels() {
 		}
 	}
 
-//AIS
+// AIS
 	axon[0]  {
 		nseg=21
 		insert nav18 	gbar_nav18(0:0.4) = 0:0
@@ -197,7 +201,7 @@ proc init_channels() {
 		insert kca	gbar_kca = gkca_ais
 	}
 
-//main axon: i.e. myelin and nodes
+// main axon: i.e. myelin and nodes
 	for i=0,myNum-1 {
 		my[i] {
 			g_pas=1/(Rm * (sheaths + 1))
@@ -223,7 +227,7 @@ proc init_channels() {
 
 // ---------------------------------------------------------------------
 // Calcium enhancement to reproduce frequency effect (Larkum et al,1999)
-// ----------------------------------------------------------------------
+// ---------------------------------------------------------------------
 
 	forall {
 		vh1_it2    = 56
@@ -250,11 +254,11 @@ proc init_channels() {
 		taur_cad = 80    	// Calcium extrusion rate, in ms
 	}
 
-	//possibility to implement hot-zone
+	// possibility to implement hot-zone
 	access soma
 	area(0.5)
 	distance()
-	//apical dendrites
+	// apical dendrites
 	for i=0,apicNum-1 {
 		apic[i] {
 			for j=1,nseg {
@@ -285,7 +289,7 @@ proc init_channels() {
 	area(0.5)
 	distance()
 
-	//basal dendrites
+	// basal dendrites
 	for i=0,dendNum-1 {
 		dend[i] {
 			for j=1,nseg {
@@ -295,7 +299,7 @@ proc init_channels() {
 		}
 	}
 
-	//apical dendrites
+	// apical dendrites
 	for i=0,apicNum-1 {
 		apic[i] {
 			for j=1,nseg {
@@ -319,7 +323,7 @@ proc init_channels() {
 	area(0.5)
 	distance()
 
-	//basal dendrites
+	// basal dendrites
 	for i=0,dendNum-1 {
 		dend[i] {
 			for j=1,nseg {
@@ -333,7 +337,7 @@ proc init_channels() {
 		}
 	}
 
-	//apical dendrites
+	// apical dendrites
 	for i=0,apicNum-1 {
 		apic[i] {
 			for j=1,nseg {
@@ -356,7 +360,7 @@ proc init_channels() {
 	area(0.5)
 	distance()
 
-	//basal dendrites
+	// basal dendrites
 	for i=0,dendNum-1 {
 		dend[i] {
 			for j=1,nseg {
@@ -367,7 +371,7 @@ proc init_channels() {
 		}
 	}
 
-	//apical dendrites
+	// apical dendrites
 	for i=0,apicNum-1 {
 		apic[i] {
 			for j=1,nseg {
@@ -377,7 +381,6 @@ proc init_channels() {
 			}
 		}
 	}
-
 }
 
 
