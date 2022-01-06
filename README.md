@@ -1,7 +1,7 @@
 # Pyramidal neuron model for studying ***SCN2A*** mutations
 
 This repository contains NEURON and Python files to simulate the effect of 
-different *SCN2A* mutations in a reconstructed mouse cortical L5 pyramidal neuron. This model was used to study the effect of mutations on the firing rate of the pyramidal neuron in Asadollahi, Delvendahl et al. (2022). The model was constructed using the [NEURON](https://neuron.yale.edu/) modeling language and is based on the implementation by 
+different *SCN2A* mutations in a reconstructed mouse cortical L5 pyramidal neuron. This model was used to study the effect of mutations on the firing rate of the pyramidal neuron in Asadollahi et al. (2022). The model was constructed using the [NEURON](https://neuron.yale.edu/) modeling language and is based on the implementation by 
 [Ben-Shalom et al. 2017](http://dx.doi.org/10.1016/j.biopsych.2017.01.009) 
 of the model that accompanied the paper "State and
 location dependence of action potential metabolic 
@@ -23,6 +23,7 @@ To run simulations:
   `sweeps = 24`
 * run the file run_simulation.py
 * the file run_simulation_MP.py can be used for running multiple simulations in parallel using multiprocessing
+* the file plot_results.py can be used for plotting the results
 
 The simulation output is saved as .txt files into the folder "Results/". Subfolders are created for each independent condition. Output files are:
 * "spiking_results.txt" -> current injection, spike numbers, threshold, amplitude and spike delay, spikes AIS, threshold AIS, amplitude AIS, soma I_Na, AIS_I_Na
