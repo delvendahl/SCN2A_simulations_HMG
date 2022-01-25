@@ -2,4 +2,4 @@ x86_64/
 .vscode/
 __pycache__/
 .DS_Store
-Results/.DS_Store
+**/.DS_Store
