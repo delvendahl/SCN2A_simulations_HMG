@@ -1,5 +1,10 @@
 x86_64/
+arm64/
 .vscode/
 __pycache__/
+sim_files/ben_shalom_young_N.hoc
+sim_files/ben_shalom_young_N_E1803G.hoc
+sim_files/ben_shalom_young_N_E1803G_2mV.hoc
+sim_files/ben_shalom_young_N_50perc.hoc
 .DS_Store
 **/.DS_Store

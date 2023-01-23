@@ -36,13 +36,13 @@ def cc_simulation(currentinjection):
     """
 
     # general NEURON settings
-    recordTime = 650.0 * ms
+    recordTime = 450.0 * ms
     h.celsius = 33
-    v_init = -85 * mV
+    v_init = -78 * mV
 
     # clamp definition
     clamp = h.IClamp(h.soma(0.5))
-    clamp.delay = 500 * ms
+    clamp.delay = 300 * ms
     clamp.dur = 100 * ms
     clamp.amp = currentinjection
 

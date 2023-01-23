@@ -39,13 +39,13 @@ def cc_simulation(currentinjection, path):
     h.dt = 0.02
 
     # general NEURON settings
-    recordTime = 650.0 * ms
+    recordTime = 450.0 * ms
     h.celsius = 33
-    v_init = -85 * mV
+    v_init = -78 * mV
 
     # clamp definition
     clamp = h.IClamp(h.soma(0.5))
-    clamp.delay = 500 * ms
+    clamp.delay = 300 * ms
     clamp.dur = 100 * ms
     clamp.amp = currentinjection
 
@@ -135,7 +135,7 @@ if __name__ == '__main__':
 
     startTime = datetime.now()
 
-    name_of_sim = 'youngPN_scn2a_ais_E1803G_het'
+    name_of_sim = 'kcnq2_het'
 
     target_path = './Results/' + name_of_sim
     if not os.path.exists(target_path):
@@ -150,7 +150,7 @@ if __name__ == '__main__':
     currents = [1 + x * currentstep for x in range(sweeps)]
 
     # print results
-    print('\ncurrent: \t # spikes: \t AP threshold: \t spike delay: \t spike amplitude: \t peak na current:')
+    print('\ncurrent: \t # spikes: \t AP threshold: \t AP delay: \t AP amp: \t peak I_na:')
 
     mp_func = partial(cc_simulation, path=path_to_hocfile)
 
