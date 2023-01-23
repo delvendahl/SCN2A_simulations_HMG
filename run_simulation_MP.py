@@ -135,7 +135,7 @@ if __name__ == '__main__':
 
     startTime = datetime.now()
 
-    name_of_sim = 'kcnq2_het'
+    name_of_sim = 'youngPN'
 
     target_path = './Results/' + name_of_sim
     if not os.path.exists(target_path):
