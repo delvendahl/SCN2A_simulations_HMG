@@ -2,6 +2,7 @@ x86_64/
 arm64/
 .vscode/
 __pycache__/
+run_simulation_MP_VM.py
 sim_files/ben_shalom_young_N.hoc
 sim_files/ben_shalom_young_N_E1803G.hoc
 sim_files/ben_shalom_young_N_E1803G_2mV.hoc

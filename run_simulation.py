@@ -133,7 +133,7 @@ if __name__ == '__main__':
     startTime = datetime.now()
 
     # name_of_sim = os.path.splitext(sys.argv[1])[0]
-    name_of_sim = 'ben_shalom_young'
+    name_of_sim = 'youngPN'
     
     target_path = './Results/' + name_of_sim
     if not os.path.exists(target_path):
