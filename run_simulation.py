@@ -2,10 +2,8 @@ from neuron import h
 from neuron.units import ms, mV
 import numpy as np
 import functions
-from multiprocessing import Pool
-from datetime import datetime
+import time
 import os
-import sys
 
 
 def initialize(filename):
@@ -130,9 +128,8 @@ def print_soma_size():
 
 if __name__ == '__main__':
 
-    startTime = datetime.now()
+    startTime = time.perf_counter()
 
-    # name_of_sim = os.path.splitext(sys.argv[1])[0]
     name_of_sim = 'youngPN'
     
     target_path = './Results/' + name_of_sim
@@ -164,4 +161,4 @@ if __name__ == '__main__':
         simresults.append(result)
 
     save_results(simresults, target_path)
-    print(datetime.now() - startTime)
+    print(time.perf_counter() - startTime)
