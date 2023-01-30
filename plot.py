@@ -36,5 +36,5 @@ for sec in h.allsec():
         sec.v = 0
 ps = h.PlotShape(False)
 ps.plot(plt)
-# plt.savefig(f'{target_path}/morphology.png')
+plt.savefig(f'{target_path}/morphology.png')
 plt.show()
