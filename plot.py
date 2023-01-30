@@ -12,7 +12,7 @@ def plot(x, y, xlabel, ylabel, title, filename):
     plt.show()
 
 
-name_of_sim = 'ben_shalom_young'
+name_of_sim = 'youngPN'
 target_path = './Results/' + name_of_sim
 
 soma_AP_traces = np.loadtxt(f'{target_path}/soma_AP_traces.txt', delimiter='\t')
@@ -25,16 +25,16 @@ plot(AIS_Na_current[:, 0], AIS_Na_current[:, 13], 'Time (ms)', 'Current (nA)', '
 
 # plot spiking results:
 plot(results[:, 0], results[:, 1], 'Current (nA)', 'Spike Count', 'Spiking Results', f'{target_path}/spiking_results.png')
-plot(results[:, 0], results[:, 2], 'Current (nA)', 'AP voltage threshold (mV)', 'Spiking Results', f'{target_path}/threshold.png')
-plot(results[:, 0], results[:, 3], 'Current (nA)', 'AP amplitude (mV)', 'Spiking Results', f'{target_path}/amplitude.png')
-plot(results[:, 0], results[:, 4], 'Current (nA)', 'AP latency (ms)', 'Spiking Results', f'{target_path}/latency.png')
+plot(results[:, 0], results[:, 2], 'Current (nA)', 'AP voltage threshold (mV)', 'AP Threshold Results', f'{target_path}/threshold.png')
+plot(results[:, 0], results[:, 3], 'Current (nA)', 'AP amplitude (mV)', 'AP amplitude Results', f'{target_path}/amplitude.png')
+plot(results[:, 0], results[:, 4], 'Current (nA)', 'AP latency (ms)', 'AP latency Results', f'{target_path}/latency.png')
 
 # plot the neuron's morphology
 h.load_file('morphology.hoc')
-# for sec in h.allsec():
-#     if 'apic' in str(sec):
-#         sec.v = 0
+for sec in h.allsec():
+    if 'apic' in str(sec):
+        sec.v = 0
 ps = h.PlotShape(False)
 ps.plot(plt)
-plt.savefig(f'{target_path}/morphology.png')
+# plt.savefig(f'{target_path}/morphology.png')
 plt.show()
