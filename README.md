@@ -1,7 +1,7 @@
 # Pyramidal neuron model for studying ***SCN2A*** mutations
 
 This repository contains NEURON and Python files to simulate the effect of 
-different *SCN2A* mutations in a reconstructed mouse cortical L5 pyramidal neuron. This model was used to study the effect of mutations on the firing rate of the pyramidal neuron in the following publication ([Asadollahi et al. 2023](https://doi.org/10.1093/hmg/ddad048)): 
+different *SCN2A* mutations in a reconstructed mouse cortical L5 pyramidal neuron. This model was used to study the effect of sodium channel mutations on the firing rate of a pyramidal neuron in the following publication ([Asadollahi et al. 2023](https://doi.org/10.1093/hmg/ddad048)): 
 
 Asadollahi R., Delvendahl I., et al. (2023) Pathogenic *SCN2A* variants cause early-stage dysfunction in patient-derived neurons. Human Molecular Genetics, ddad048 (doi:10.1093/hmg/ddad048)
 
