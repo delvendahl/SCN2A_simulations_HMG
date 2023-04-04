@@ -1,13 +1,17 @@
 # Pyramidal neuron model for studying ***SCN2A*** mutations
 
 This repository contains NEURON and Python files to simulate the effect of 
-different *SCN2A* mutations in a reconstructed mouse cortical L5 pyramidal neuron. This model was used to study the effect of mutations on the firing rate of the pyramidal neuron in [Asadollahi et al. 2023](https://doi.org/10.1093/hmg/ddad048). The model was constructed using the [NEURON](https://neuron.yale.edu/) modeling language and is based on the implementation by 
+different *SCN2A* mutations in a reconstructed mouse cortical L5 pyramidal neuron. This model was used to study the effect of mutations on the firing rate of the pyramidal neuron in the following publication ([Asadollahi et al. 2023](https://doi.org/10.1093/hmg/ddad048)): 
+
+Asadollahi R., Delvendahl I., et al. (2023) Pathogenic *SCN2A* variants cause early-stage dysfunction in patient-derived neurons. Human Molecular Genetics, ddad048 (doi:10.1093/hmg/ddad048)
+
+The model was constructed using the [NEURON](https://neuron.yale.edu/) modeling language and is based on the implementation by 
 [Ben-Shalom et al. 2017](http://dx.doi.org/10.1016/j.biopsych.2017.01.009) 
 of the model that accompanied the paper "State and
 location dependence of action potential metabolic 
 cost" ([Hallermann et al. 2012](http://dx.doi.org/10.1038/nn.3132)).
   
-Simulations were run with NEURON 8.0 in Python 3.8.12 (NEURON can be installed via `pip install neuron`). Python dependencies: neuron, numpy, scipy
+Simulations were run with NEURON 8.0 in Python 3.8.12 (NEURON can be installed via `pip install neuron`). Python dependencies: neuron, numpy, scipy (run `pip install -r requirements.txt`)
 
 To run simulations:  
 * compile all .mod files (cd to directory and execute `nrnivmodl`)
