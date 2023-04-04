@@ -1,6 +1,7 @@
 # Pyramidal neuron model for studying ***SCN2A*** mutations
 
 [![minimal Python version](https://img.shields.io/badge/Python%3E%3D-3.8-6666ff.svg)](https://www.anaconda.com/distribution/)
+[![NEURON version](https://img.shields.io/badge/NEURON-8.0-yellow.svg)](https://www.neuron.yale.edu/neuron/)
 [![citation](https://zenodo.org/badge/DOI/10.1093/hmg/ddad048.svg)](https://doi.org/10.1093/hmg/ddad048)
 
 
